@@ -1,26 +1,26 @@
     :root {
-            --taqbit-navy: #3a4bcd;
-            --taqbit-red: #ff5a6b;
-            --taqbit-dark-navy: #2a3a9d;
-            --taqbit-light-navy: #5a6bed;
-            --taqbit-light-red: #ff7b8a;
-            --taqbit-dark-red: #e64956;
-            --taqbit-bg: #f8fafc;
-            --taqbit-card: #ffffff;
-            --taqbit-text: #1e293b;
-            --taqbit-text-light: #64748b;
+            --qdit-navy: #3a4bcd;
+            --qdit-red: #ff5a6b;
+            --qdit-dark-navy: #2a3a9d;
+            --qdit-light-navy: #5a6bed;
+            --qdit-light-red: #ff7b8a;
+            --qdit-dark-red: #e64956;
+            --qdit-bg: #f8fafc;
+            --qdit-card: #ffffff;
+            --qdit-text: #1e293b;
+            --qdit-text-light: #64748b;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--taqbit-bg);
-            color: var(--taqbit-text);
+            background-color: var(--qdit-bg);
+            color: var(--qdit-text);
             overflow-x: hidden;
         }
         
         .hero-gradient {
             background: radial-gradient(circle at 70% 30%, rgba(58, 75, 205, 0.15) 0%, rgba(248, 250, 252, 1) 70%);
-            background-color: var(--taqbit-bg);
+            background-color: var(--qdit-bg);
         }
         
         .quantum-pattern {
@@ -47,47 +47,47 @@
             background-size: 20px 20px;
         }
         
-        .taqbit-primary {
-            background-color: var(--taqbit-navy);
+        .qdit-primary {
+            background-color: var(--qdit-navy);
         }
         
-        .taqbit-secondary {
-            background-color: var(--taqbit-red);
+        .qdit-secondary {
+            background-color: var(--qdit-red);
         }
         
-        .taqbit-hover-primary:hover {
-            background-color: var(--taqbit-light-navy);
+        .qdit-hover-primary:hover {
+            background-color: var(--qdit-light-navy);
         }
         
-        .taqbit-hover-secondary:hover {
-            background-color: var(--taqbit-light-red);
+        .qdit-hover-secondary:hover {
+            background-color: var(--qdit-light-red);
         }
         
-        .taqbit-text-primary {
-            color: var(--taqbit-navy);
+        .qdit-text-primary {
+            color: var(--qdit-navy);
         }
         
-        .taqbit-text-secondary {
-            color: var(--taqbit-red);
+        .qdit-text-secondary {
+            color: var(--qdit-red);
         }
         
-        .taqbit-border-primary {
-            border-color: var(--taqbit-navy);
+        .qdit-border-primary {
+            border-color: var(--qdit-navy);
         }
         
-        .taqbit-border-secondary {
-            border-color: var(--taqbit-red);
+        .qdit-border-secondary {
+            border-color: var(--qdit-red);
         }
         
-        .taqbit-gradient-text {
-            background: linear-gradient(135deg, var(--taqbit-navy) 0%, var(--taqbit-red) 100%);
+        .qdit-gradient-text {
+            background: linear-gradient(135deg, var(--qdit-navy) 0%, var(--qdit-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .taqbit-gradient-bg {
-            background: linear-gradient(135deg, var(--taqbit-navy) 0%, var(--taqbit-red) 100%);
+        .qdit-gradient-bg {
+            background: linear-gradient(135deg, var(--qdit-navy) 0%, var(--qdit-red) 100%);
         }
         @keyframes fadeup {
             0% {

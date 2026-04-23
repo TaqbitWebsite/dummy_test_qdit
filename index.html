@@ -2,16 +2,16 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <link rel="icon" href="./assets/QDIT favicon.png" type="image/png">
+    <link rel="icon" href="./assets/qdit favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="QDIT Labs provides quantum-safe cybersecurity solutions including Quantum Key Distribution (QKD) and Quantum Random Number Generators (QRNG) for defense, telecom, and enterprise infrastructure.">
+    <meta name="description" content="qdit Labs provides quantum-safe cybersecurity solutions including Quantum Key Distribution (QKD) and Quantum Random Number Generators (QRNG) for defense, telecom, and enterprise infrastructure.">
     <meta name="keywords" content="quantum security, QKD, QRNG, post-quantum cryptography, cybersecurity">
-    <meta name="author" content="QDIT Labs">
-    <meta property="og:title" content="QDIT Labs | Quantum-Safe Cybersecurity Solutions">
+    <meta name="author" content="qdit Labs">
+    <meta property="og:title" content="qdit Labs | Quantum-Safe Cybersecurity Solutions">
     <meta property="og:description" content="Enterprise-grade quantum security solutions for the post-quantum era.">
     <meta property="og:type" content="website">
-    <title>QDIT Labs | Enterprise Quantum-Safe Cybersecurity Solutions</title>
+    <title>qdit Labs | Enterprise Quantum-Safe Cybersecurity Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -252,43 +252,64 @@
             </div>
         </div>
     </section>
-     <!-- Latest News -->
-     <div>
-    <div style="width: 100%; height: 410px; overflow: hidden; position: relative; display: flex; align-items: center;background-color: #fff"; onmouseover="this.querySelector('.track').style.animationPlayState='paused'" onmouseout="this.querySelector('.track').style.animationPlayState='running'">
-        <div style="display: flex; gap: 18px; align-items: center; flex-wrap: nowrap; animation: slide var(--track-duration) linear infinite;" id="track" class='track'></div>
+  <section class="relative min-h-screen flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 bg-blue-50 overflow-hidden">
+
+
+    <!-- Soft background gradient -->
+    <div class="absolute inset-0 z-0">
+       <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-indigo-50"></div>
     </div>
+
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto relative z-20 w-full">
+        
+        <!-- Heading -->
+        <h2 class="text-4xl md:text-6xl font-bold text-center text-gray-900 mb-12">
+            qdit Labs in the News
+        </h2>
+
+        <!-- Grid -->
+        <div id="news-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+
+    </div>
+</section>
       
     
+   
     <script>
-        const tiles = [
-            { img: 'assets/mou_img1.jpeg', title: 'Taqbit Labs is proud to announce the signing of a Memorandum of Understanding (MoU) with the Government of Andhra Pradesh, marking our entry into the state’s bold and rapidly advancing quantum ecosystem.' },
-            { img: 'assets/mou_img2.jpeg', title: 'Under leadership of Shri N. Chandrababu Naidu and Shri Nara Lokesh, Andhra Pradesh is advancing deep technology and building India’s quantum-ready future. We are honored to join this journey.' },
-            { img: 'assets/amravati_workshop1.jpeg', title: 'Animesh Aaryan featured as a panelist at the Amravati Quantum Valley Workshop, discussing breakthroughs shaping the quantum future.' },
-            { img: 'assets/amravati_workshop2.jpeg', title: 'Acknowledged for its quantum tech innovations, Taqbit Labs participated in the Amravati Quantum Valley Workshop panel, offering valuable contributions.' },
-        ];
+const tiles = [
+    { img: 'assets/mou_img1.jpeg', title: 'Taqbit Labs is proud to announce the signing of a Memorandum of Understanding (MoU) with the Government of Andhra Pradesh, marking our entry into the state’s bold and rapidly advancing quantum ecosystem.', style: 'object-position: top;' },
+    { img: 'assets/mou_img2.jpeg', title: 'Under leadership of Shri N. Chandrababu Naidu and Shri Nara Lokesh, Andhra Pradesh is advancing deep technology and building India’s quantum-ready future. We are honored to join this journey.' },
+    { img: 'assets/amravati_workshop1.jpeg', title: 'Animesh Aaryan featured as a panelist at the Amravati Quantum Valley Workshop, discussing breakthroughs shaping the quantum future.' },
+    { img: 'assets/bilesh_event.jpg', title: 'Team Taqbit Labs is excited to be exhibiting today at the Amaravati Quantum Valley Workshop 2025 in Vijayawada!' },
+    { img: 'assets/amravati_workshop2.jpeg', title: 'Acknowledged for its quantum tech innovations, Taqbit Labs participated in the Amravati Quantum Valley Workshop panel, offering valuable contributions.' },
+    { img: 'assets/animesh_cll_event2.jpg', title: 'At the CII Quantum Technology Conclave 2026, New Delhi, our CEO Animesh Aaryan, participated in a strategic panel discussion on Quantum-Safe Cybersecurity & Cryptography.' },
+    { img: 'assets/nasc_complex.jpg', title: 'CEO, represented Taqbit Labs at this prestigious event held at the NASC Complex, New Delhi. The theme—"Technology, Coordination, and Commitment: Vision for a Secure and Strong India"—resonates deeply with our mission at Taqbit LABS' ,style: 'object-position: 50% 25%; transform: scale(0.95);'},
+    { img: 'assets/ai_summit_animesh.jpg', title: 'Thrilled that our CEO Animesh Aaryan is representing Taqbit LABS at the AI Impact Summit 2026—tackling a huge hurdle for innovators today : 𝐅𝐚𝐢𝐫 𝐚𝐜𝐜𝐞𝐬𝐬 𝐭𝐨 𝐀𝐈 𝐜𝐨𝐦𝐩𝐮𝐭𝐞 𝐚𝐧𝐝 𝐝𝐚𝐭𝐚 𝐫𝐞𝐬𝐨𝐮𝐫𝐜𝐞𝐬.' },
+    { img: 'assets/xdlinx_animesh.jpg', title: 'As the International Year of Quantum (IYQ) 2025 draws to a close, Taqbit Labs is thrilled to announce our MoU with XDLINX Space Labs to pioneer quantum-safe satellite communications.\nThis pioneering collaboration integrates Quantum Key Distribution (QKD) with Post-Quantum Cryptography (PQC) for robust, future-resilient security across space-to-ground links (command & telemetry) and space-to-space links (inter-satellite communications).', style: 'object-position: top;'  }
+];
 
-        const track = document.getElementById('track');
+const container = document.getElementById('news-container');
 
-        // Duplicate tiles to ensure seamless scrolling
-        const doubled = [...tiles, ...tiles];
+tiles.forEach(t => {
+    const card = document.createElement('div');
+    card.className = "bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300";
 
-        doubled.forEach(t => {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
+    const img = document.createElement('img');
+    img.src = t.img;
+   img.className = "max-h-full max-w-full object-contain";
+img.style = t.style || "";
 
-            const img = document.createElement('img');
-            img.src = t.img;
+    const cap = document.createElement('div');
+   img.className = "w-full h-52 object-cover object-center";
+    cap.textContent = t.title;
 
-            const cap = document.createElement('div');
-            cap.className = 'caption';
-            cap.textContent = t.title;
-
-            tile.appendChild(img);
-            tile.appendChild(cap);
-            track.appendChild(tile);
-        });
-    </script>
-
+    card.appendChild(img);
+    card.appendChild(cap);
+    container.appendChild(card);
+});
+</script>
     <section class="bg-gray-900 py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
@@ -343,7 +364,7 @@
                     
                     <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
                         <p>
-                            In the new quantum era, data is your most valuable asset. QDIT Labs ensures it remains protected, future-proofing your business against emerging threats and enabling new avenues of secure innovation.
+                            In the new quantum era, data is your most valuable asset. qdit Labs ensures it remains protected, future-proofing your business against emerging threats and enabling new avenues of secure innovation.
                         </p>
                         <p>
                             We build quantum-safe solutions designed for the realities of modern business. Our technologies provide business continuity, safeguard your customers' trust, and protect your competitive advantage in a digital world.
@@ -374,7 +395,7 @@
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-yellow-500 mb-4">Why Choose QDIT Labs?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-yellow-500 mb-4">Why Choose qdit Labs?</h2>
                 <p class="text-gray-300 max-w-2xl mx-auto">Your trusted partner for a profitable and secure quantum migration.</p>
             </div>
             
@@ -601,7 +622,7 @@
         <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
                 <blockquote class="text-lg text-gray-200 italic leading-relaxed">
-                    "The integration of QDIT's PQC solution was seamless and transparent. It allowed us to future-proof our platform for the next decade without any disruption to our existing infrastructure or customer experience. It's a key part of our long-term security strategy."
+                    "The integration of qdit's PQC solution was seamless and transparent. It allowed us to future-proof our platform for the next decade without any disruption to our existing infrastructure or customer experience. It's a key part of our long-term security strategy."
                 </blockquote>
                 <div class="mt-6">
                     <p class="font-bold text-yellow-400">Priya Sharma</p>
@@ -610,7 +631,7 @@
             </div>
             <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
                 <blockquote class="text-lg text-gray-200 italic leading-relaxed">
-                    "Protecting our customers' data is paramount to our brand reputation. QDIT's solutions give us absolute confidence against the future threats of quantum computing. This isn't just about security; it's about building lasting trust with our users."
+                    "Protecting our customers' data is paramount to our brand reputation. qdit's solutions give us absolute confidence against the future threats of quantum computing. This isn't just about security; it's about building lasting trust with our users."
                 </blockquote>
                 <div class="mt-6">
                     <p class="font-bold text-yellow-400">Rahul Singh</p>
@@ -640,65 +661,100 @@
                     </button>
                 </div>
                 
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name*</label>
-                            <input type="text" id="name" name="name" required 
-                                   class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email*</label>
-                            <input type="email" id="email" name="email" required 
-                                   class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company*</label>
-                            <input type="text" id="company" name="company" required 
-                                   class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                            <input type="tel" id="phone" name="phone" 
-                                   class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="interest" class="block text-sm font-medium text-gray-700 mb-2">Primary Interest*</label>
-                        <select id="interest" name="interest" 
-                                class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200 appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9Ii82NDc0OGIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24iPjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPjwvc3ZnPg==')] bg-no-repeat bg-[center_right_1rem]">
-                            <option value="" disabled selected>Select an option</option>
-                            <option>Quantum Key Distribution (QKD)</option>
-                            <option>Quantum Random Number Generation (QRNG)</option>
-                            <option>Post-Quantum Cryptography</option>
-                            <option>Enterprise Security Solutions</option>
-                            <option>Custom Implementation</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
-                        <textarea id="message" name="message" rows="3" 
-                                  class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200"></textarea>
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <input id="privacy" name="privacy" type="checkbox" required 
-                               class="h-5 w-5 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500 mr-3">
-                        <label for="privacy" class="text-sm text-gray-600">
-                            I agree to QDIT Labs' <a href="privacy.html" class="text-yellow-600 hover:underline">Privacy Policy</a> and <a href="tos.html" class="text-yellow-600 hover:underline">Terms of Service</a>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="w-full bg-black hover:bg-gray-800 text-yellow-400 font-semibold text-lg py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Contact Our Business Team
-                    </button>
-                </form>
+                
+                <form id="contactForm"
+action="https://docs.google.com/forms/d/e/1FAIpQLSfFTzDwWbTmU4UybNG7mA0cWMHCebrpUcPXnQbEDlZhGHFBHQ/formResponse"
+method="POST"
+
+target="hidden_iframe"
+class="space-y-6">
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name*</label>
+<input type="text" id="name" name="entry.1423374895" required
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
+</div>
+
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email*</label>
+<input type="email" id="email" name="entry.834719355" required
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div>
+<label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company*</label>
+<input type="text" id="company" name="entry.98573223" required
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
+</div>
+
+<div>
+<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+<input type="tel" id="phone" name="entry.761519773"required
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
+</div>
+
+</div>
+
+<div>
+<label for="interest" class="block text-sm font-medium text-gray-700 mb-2">Primary Interest*</label>
+
+<select id="interest" name="entry.1879144797" required
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200">
+
+<option value="" disabled selected>Select an option</option>
+<option>Quantum Key Distribution (QKD)</option>
+<option>Quantum Random Number Generation (QRNG)</option>
+<option>Post-Quantum Cryptography</option>
+<option>Enterprise Security Solutions</option>
+<option>Custom Implementation</option>
+
+</select>
+</div>
+
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+
+<textarea id="message" name="entry.38619892" rows="3"
+class="w-full px-4 py-3 text-lg rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 transition-all duration-200"></textarea>
+</div>
+
+<div class="flex items-center">
+<input id="privacy" name="privacy" type="checkbox" required
+class="h-5 w-5 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500 mr-3">
+
+<label for="privacy" class="text-sm text-gray-600">
+I agree to qdit Labs' 
+<a href="privacy.html" class="text-yellow-600 hover:underline">Privacy Policy</a>
+and 
+<a href="tos.html" class="text-yellow-600 hover:underline">Terms of Service</a>
+</label>
+</div>
+
+<button type="submit"
+class="w-full bg-black hover:bg-gray-800 text-yellow-400 font-semibold text-lg py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+Contact Our Business Team
+</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function() {
+
+setTimeout(function(){
+alert("Thank you! Our team will contact you shortly.");
+document.getElementById("contactForm").reset();
+},500);
+
+});
+</script>
             </div>
         </div>
     </div>

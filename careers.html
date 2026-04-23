@@ -2,11 +2,12 @@
 <html lang="en" class="scroll-smooth">
 
  <head>
-    <link rel="icon" href="./assets/QDIT favicon.png" type="image/png">
+    <link rel="icon" href="./assets/qdit favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers at QDIT Labs | Quantum Security</title>
+    <title>Careers at qdit Labs | Quantum Security</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -152,7 +153,7 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Why Choose QDIT Labs?</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Why Choose qdit Labs?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">We're building technology that will define the future of
                     cybersecurity</p>
             </div>
@@ -267,31 +268,56 @@
         </div>
     </section>
 
+
+   <!-- Careers Contact Section -->
+<section class="py-16 bg-white border-t">
+    <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+            Didn’t find a suitable role?
+        </h2>
+        <p class="text-gray-600 mb-6">
+            We’re always looking for talented people. Send your resume and we’ll get in touch if there’s a match.
+        </p>
+        <a href="mailto:careers@qditlabs.com" 
+           class="inline-flex items-center px-6 py-3 rounded-md qd-button text-base font-medium">
+            📩 careers@qditlabs.com
+        </a>
+    </div>
+</section>
+
     <!-- Footer -->
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>   
 
     <script>
         // Global variable to store all jobs
         let allJobs = [];
 
         // Fetch jobs via proxy, with dummy fallback for each job type
-        fetch('https://airtable-backend-vxap.onrender.com/api/jobs')
-            .then(res => res.json())
-            .then(data => {
-                allJobs = Array.isArray(data) ? data : [];
-                if (allJobs.length === 0) {
-                    allJobs = getDummyJobs();
-                }
-                renderJobs(allJobs);
-                setupDepartmentFilters(allJobs);
-            })
-            .catch(err => {
-                console.error(err);
-                allJobs = getDummyJobs();
-                renderJobs(allJobs);
-                setupDepartmentFilters(allJobs);
-            });
+        // fetch('https://airtable-backend-vxap.onrender.com/api/jobs')
+        // fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR-E728GzI-yf_Vr70SWLwr0PPJofToTgnfigk20dmm6VeoBsvTHR_OdrUeUTkNfUfZVOwU5n1Uh8UE/pub?output=csv")
+        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQDSihYGyl2fqrOj_pIyv_mHKMrdA7t0BzsWIvNb1vWD1x2IiZjcr9VxJU_ZZyeQsxU-8bfNq2BUJvP/pub?output=csv")
+            .then(response => response.text())
+            .then(csv => {
 
+const data = Papa.parse(csv, { header: true }).data;
+
+const jobs = data.map(row => ({
+fields:{
+"Job Title": row["Job Title"]?.trim(),
+"Department": row["Department"]?.trim(),
+"Type": row["Type"]?.trim(),
+"Location": row["Location"]?.trim(),
+"Short Description": row["Short Description"]?.trim(),
+"Key Skills": row["Key Skills"]?.trim()
+}
+}));
+
+allJobs = jobs;
+renderJobs(allJobs);
+setupDepartmentFilters(allJobs);
+filterJobs();
+
+});
         function getDummyJobs() {
             const make = (id, title, dept, type, location, desc) => ({
                 id: `dummy-${id}`,
@@ -316,63 +342,129 @@
             ];
         }
 
-        // Render jobs function
+       
+
+      function filterJobs() {
+
+const skillsSearch = document.getElementById('skills-search').value.toLowerCase();
+const locationSearch = document.getElementById('location-search').value.toLowerCase();
+const jobTypeFilter = document.getElementById('job-type-filter').value.toLowerCase();
+const activeDepartment = document.querySelector('.department-filter.filter-active')?.dataset.department || 'all';
+
+const filteredJobs = allJobs.filter(job => {
+
+const jobData = job.fields;
+
+const type = jobData['Type'] ? jobData['Type'].toLowerCase().trim() : '';
+const department = jobData['Department'] ? jobData['Department'].trim() : '';
+const skills = jobData['Key Skills'] ? jobData['Key Skills'].toLowerCase() : '';
+const location = jobData['Location'] ? jobData['Location'].toLowerCase() : '';
+
+if (activeDepartment !== 'all' && department.toLowerCase() !== activeDepartment.toLowerCase()) return false;
+
+if (jobTypeFilter !== 'all' && type !== jobTypeFilter) return false;
+
+if (skillsSearch && !skills.includes(skillsSearch)) return false;
+
+if (locationSearch && !location.includes(locationSearch)) return false;
+
+return true;
+
+});
+
+renderJobs(filteredJobs);
+
+}
+
+document.getElementById("job-type-filter")
+.addEventListener("change", filterJobs);
         function renderJobs(jobs) {
+
             const container = document.getElementById('jobs-container');
             const jobCount = document.getElementById('job-count');
 
             if (jobs.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-10 bg-white rounded-xl shadow-sm">
-                        <i class="fas fa-search fa-2x text-gray-400 mb-4"></i>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">No jobs found</h3>
-                        <p class="text-gray-600">Try adjusting your filters or search terms</p>
-                    </div>`;
-                jobCount.textContent = '0 jobs found';
-                return;
+
+            container.innerHTML = `
+            <div class="text-center py-10 bg-white rounded-xl shadow-sm">
+            <i class="fas fa-search fa-2x text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No jobs found</h3>
+            <p class="text-gray-600">Try adjusting your filters</p>
+            </div>`;
+
+            jobCount.textContent = '0 jobs found';
+            return;
+
             }
 
             container.innerHTML = '';
             jobCount.textContent = `${jobs.length} ${jobs.length === 1 ? 'job' : 'jobs'} found`;
 
             jobs
-                .filter(job => job.fields && job.fields['Job Title'])  // Only include valid jobs
-                .forEach(job => {
-                    const jobData = job.fields;
-                    container.innerHTML += `
-                    <div class="card-hover-effect bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start">
-                            <div class="mb-4 md:mb-0">
-                                <h3 class="text-xl font-bold text-gray-900 mb-1">${jobData['Job Title']}</h3>
-                                <div class="flex flex-wrap gap-2 mb-2">
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                        ${jobData['Department']}
-                                    </span>
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        ${jobData['Type']}
-                                    </span>
-                                </div>
-                                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>${jobData['Location']}</p>
-                                <p class="text-gray-700 mb-4">${jobData['Short Description']}</p>
-                            </div>
-                            <div class="flex flex-col items-end">
-                                <a href="job-details.html?id=${job.id}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-900 qd-button transition-all mb-2">
-                                    Apply Now
-                                </a>
-                                <a href="job-details.html?id=${job.id}" class="inline-flex items-center text-yellow-600 hover:text-yellow-800 font-medium text-sm">
-                                    View Details
-                                    <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mt-4 pt-4 border-t border-gray-100">
-                            <p class="text-sm text-gray-500"><span class="font-medium">Key Skills:</span> ${jobData['Key Skills'] || 'Not specified'}</p>
-                        </div>
-                    </div>`;
-                });
-        }
+            .filter(job => job.fields && job.fields['Job Title'])
+            .forEach((job, index) => {
+
+            const jobData = job.fields;
+
+            container.innerHTML += `
+            <div class="card-hover-effect bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+
+            <div class="mb-4 md:mb-0">
+
+            <h3 class="text-xl font-bold text-gray-900 mb-1">${jobData['Job Title']}</h3>
+
+            <div class="flex flex-wrap gap-2 mb-2">
+
+            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+            ${jobData['Department']}
+            </span>
+
+            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            ${jobData['Type']}
+            </span>
+
+            </div>
+
+            <p class="text-gray-600 mb-2">
+            <i class="fas fa-map-marker-alt mr-2"></i>${jobData['Location']}
+            </p>
+
+            <p class="text-gray-700 mb-4">${jobData['Short Description']}</p>
+
+            </div>
+
+            <div class="flex flex-col items-end">
+
+            <a href="job-details.html?id=${index}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-900 qd-button transition-all mb-2">
+            Apply Now
+            </a>
+
+            <a href="job-details.html?id=${index}" class="inline-flex items-center text-yellow-600 hover:text-yellow-800 font-medium text-sm">
+            View Details
+            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"/>
+            </svg>
+            </a>
+
+            </div>
+
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-gray-100">
+            <p class="text-sm text-gray-500">
+            <span class="font-medium">Key Skills:</span>
+            ${jobData['Key Skills'] || 'Not specified'}
+            </p>
+            </div>
+
+            </div>
+            `;
+
+            });
+
+            }
 
         // Setup department filters
         function setupDepartmentFilters(jobs) {
@@ -406,46 +498,11 @@
             });
         }
 
-        // Filter jobs based on search and filters
-        function filterJobs() {
-            const skillsSearch = document.getElementById('skills-search').value.toLowerCase();
-            const locationSearch = document.getElementById('location-search').value.toLowerCase();
-            const jobTypeFilter = document.getElementById('job-type-filter').value;
-            const activeDepartment = document.querySelector('.department-filter.filter-active')?.dataset.department || 'all';
-
-            const filteredJobs = allJobs.filter(job => {
-                const jobData = job.fields;
-
-                // Department filter
-                if (activeDepartment !== 'all' && jobData['Department'] !== activeDepartment) {
-                    return false;
-                }
-
-                // Job type filter
-                if (jobTypeFilter !== 'all' && jobData['Type'] !== jobTypeFilter) {
-                    return false;
-                }
-
-                // Skills search
-                if (skillsSearch && (!jobData['Key Skills'] || !jobData['Key Skills'].toLowerCase().includes(skillsSearch))) {
-                    return false;
-                }
-
-                // Location search
-                if (locationSearch && (!jobData['Location'] || !jobData['Location'].toLowerCase().includes(locationSearch))) {
-                    return false;
-                }
-
-                return true;
-            });
-
-            renderJobs(filteredJobs);
-        }
-
+       
         // Set up event listeners for search and filter inputs
         document.getElementById('skills-search').addEventListener('input', filterJobs);
         document.getElementById('location-search').addEventListener('input', filterJobs);
-        document.getElementById('job-type-filter').addEventListener('change', filterJobs);
+        // document.getElementById('job-type-filter').addEventListener('change', filterJobs);
 
         // Initialize with 'All' department selected
         document.addEventListener('DOMContentLoaded', function () {
@@ -562,7 +619,7 @@
 
             // Start initialization
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
+                document.addEventListener('DOMContentLoaded', iniat);
             } else {
                 init();
             }

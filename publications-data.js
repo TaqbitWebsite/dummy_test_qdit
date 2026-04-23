@@ -75,7 +75,7 @@ function renderPublications(containerId, limit = null) {
         
         // For resources page, we don't group by year
         if (containerId === 'publications-container') {
-            html += `<h2 class="text-2xl font-bold text-taqbit-text mb-8 publication-year">${year}</h2>`;
+            html += `<h2 class="text-2xl font-bold text-qdit-text mb-8 publication-year">${year}</h2>`;
         }
         
         html += `<div class="grid md:grid-cols-2 gap-8">`;
@@ -84,14 +84,14 @@ function renderPublications(containerId, limit = null) {
             if (limit && count >= limit) break;
             
             html += `
-                <div class="card-hover-effect bg-taqbit-card p-6 rounded-xl shadow-md border border-gray-200">
+                <div class="card-hover-effect bg-qdit-card p-6 rounded-xl shadow-md border border-gray-200">
                     <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 rounded-lg taqbit-primary bg-opacity-10 flex items-center justify-center mr-4 flex-shrink-0">
-                            <i class="fas ${pub.isConference ? 'fa-file-alt' : 'fa-book-open'} text-lg taqbit-text-primary"></i>
+                        <div class="w-12 h-12 rounded-lg qdit-primary bg-opacity-10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas ${pub.isConference ? 'fa-file-alt' : 'fa-book-open'} text-lg qdit-text-primary"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-taqbit-text mb-1">${pub.title}</h3>
-                            <p class="text-sm text-taqbit-text-light mb-2">${pub.journal}</p>
+                            <h3 class="text-xl font-bold text-qdit-text mb-1">${pub.title}</h3>
+                            <p class="text-sm text-qdit-text-light mb-2">${pub.journal}</p>
                             <div class="flex flex-wrap gap-2 mb-3">
                                 ${pub.tags.map(tag => 
                                     `<span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">${tag}</span>`
@@ -99,7 +99,7 @@ function renderPublications(containerId, limit = null) {
                             </div>
                         </div>
                     </div>
-                    <p class="text-taqbit-text-light mb-4">Authors: ${pub.authors}</p>
+                    <p class="text-qdit-text-light mb-4">Authors: ${pub.authors}</p>
                     <div class="flex justify-between items-center">
                         <div class="text-sm text-gray-500">
                             <span class="font-medium">${pub.isConference ? '' : 'Impact Factor:'}</span> ${pub.impact}
