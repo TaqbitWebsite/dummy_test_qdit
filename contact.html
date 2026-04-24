@@ -151,6 +151,7 @@
 action="https://docs.google.com/forms/d/e/1FAIpQLSeMCUcrkt5q8CA6waXbUfQW0X7-pokwqvhBilksebOFO9kY1g/formResponse"
 method="POST"
 target="hidden_iframe"
+onsubmit="formSubmitted()"
 class="space-y-6">
 
 <div class="grid md:grid-cols-2 gap-6">
@@ -208,14 +209,14 @@ class="space-y-6">
 
 </form>
 
-
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 <script>
-document.getElementById("contact-us-form").addEventListener("submit", function() {
-  setTimeout(function(){
-    alert("Message sent successfully!");
-    document.getElementById("contact-us-form").reset();
-  }, 500);
-});
+function formSubmitted() {
+    setTimeout(function () {
+        alert("✅ Message sent successfully!");
+        document.getElementById("contact-us-form").reset();
+    }, 500);
+}
 </script>
     </div>
 </section>
@@ -459,7 +460,7 @@ document.getElementById("contact-us-form").addEventListener("submit", function()
         })();
     </script>
 
-   <script>
+   <!-- <script>
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-us-form');
     const submitBtn = document.getElementById('submit-contact-btn');
@@ -533,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 });
-</script>
+</script> -->
    
 </body>
 </html>
