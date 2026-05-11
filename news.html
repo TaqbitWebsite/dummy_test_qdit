@@ -202,43 +202,7 @@
             `).join('');
         }
 
-        // Fetch news function
-        /*function fetchNews() {
-            const apiKey = 'd90a84a7085b43855cc3b6dff1a08f46'; // Replace with your real key
-            const query = 'quantum security OR quantum computing OR cryptography';
-            const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=6&token=${apiKey}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('news-container');
-                    container.innerHTML = data.articles.map(article => `
-                        <div class="card-hover-effect bg-white border border-gray-200 rounded-xl p-8 shadow-lg">
-                            <a href="${article.url}" target="_blank" class="block mb-4">
-                                <img src="${article.image || 'https://via.placeholder.com/600x300?text=Quantum+News'}" alt="${article.title}" class="w-full h-48 object-cover rounded-md mb-4">
-                                <h2 class="text-2xl font-bold text-gray-900 mb-2">${article.title}</h2>
-                            </a>
-                            <p class="text-gray-600 text-sm mb-3">${new Date(article.publishedAt).toLocaleDateString()}</p>
-                            <p class="text-gray-700 mb-4">${article.description || ''}</p>
-                            <a href="${article.url}.html" target="_blank" class="inline-flex items-center text-yellow-600 font-medium">
-                                Read Full Article
-                                <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                </svg>
-                            </a>
-                        </div>
-                    `).join('');
-                })
-                .catch(err => {
-                    console.error(err);
-                    document.getElementById('news-container').innerHTML = `
-                        <div class="col-span-2 text-center py-10">
-                            <p class="text-red-500 mb-4">Failed to load news. Please check the API key or try again later.</p>
-                            <p class="text-gray-600">Showing sample news instead.</p>
-                            <!-- Sample news fallback can be added here -->
-                        </div>`;
-                });
-        }*/
+       
     function fetchNews() {
     fetch("/api/news")
         .then(response => {
