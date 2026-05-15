@@ -258,8 +258,77 @@
         }
 
        
-    function fetchNews() {
-    fetch("/api/news")
+//     function fetchNews() {
+//     fetch("/api/news")
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error("Failed to fetch news");
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             const container = document.getElementById("news-container");
+
+//             if (!data.articles || data.articles.length === 0) {
+//                 container.innerHTML =
+//                     `<p class="text-center text-gray-500">No news available.</p>`;
+//                 return;
+//             }
+
+//             container.innerHTML = data.articles.map(article => `
+//                 <div class="card-hover-effect bg-white border border-gray-200 rounded-xl p-8 shadow-lg">
+//                     <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="block mb-4">
+//                         <img 
+//                             src="${article.image || 'https://via.placeholder.com/600x300?text=Quantum+News'}"
+//                             alt="${article.title}"
+//                             class="w-full h-48 object-cover rounded-md mb-4"
+//                         >
+//                         <h2 class="text-2xl font-bold text-gray-900 mb-2">
+//                             ${article.title}
+//                         </h2>
+//                     </a>
+
+//                     <p class="text-gray-600 text-sm mb-3">
+//                         ${new Date(article.publishedAt).toLocaleDateString()}
+//                     </p>
+
+//                     <p class="text-gray-700 mb-4">
+//                         ${article.description || ""}
+//                     </p>
+
+//                     <a href="${article.url}" target="_blank" rel="noopener noreferrer"
+//                        class="inline-flex items-center text-yellow-600 font-medium">
+//                         Read Full Article
+//                         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+//                             <path fill-rule="evenodd"
+//                                   d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+//                                   clip-rule="evenodd" />
+//                         </svg>
+//                     </a>
+//                 </div>
+//             `).join("");
+//         })
+//         .catch(error => {
+//             console.error(error);
+//             document.getElementById("news-container").innerHTML = `
+//                 <div class="text-center py-10">
+//                     <p class="text-red-500 mb-2">Failed to load news.</p>
+//                     <p class="text-gray-600 text-sm">Please try again later.</p>
+//                 </div>
+//             `;
+//         });
+// }
+function fetchNews() {
+
+    const isLocal =
+        window.location.hostname === "127.0.0.1" ||
+        window.location.hostname === "localhost";
+
+    const url = isLocal
+        ? "https://gnews.io/api/v4/search?q=quantum%20security%20OR%20quantum%20computing%20OR%20cryptography&lang=en&max=6&token=d90a84a7085b43855cc3b6dff1a08f46"
+        : "/api/news";
+
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch news");
@@ -267,6 +336,7 @@
             return response.json();
         })
         .then(data => {
+
             const container = document.getElementById("news-container");
 
             if (!data.articles || data.articles.length === 0) {
@@ -277,12 +347,17 @@
 
             container.innerHTML = data.articles.map(article => `
                 <div class="card-hover-effect bg-white border border-gray-200 rounded-xl p-8 shadow-lg">
-                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="block mb-4">
-                        <img 
+
+                    <a href="${article.url}" target="_blank"
+                       rel="noopener noreferrer"
+                       class="block mb-4">
+
+                        <img
                             src="${article.image || 'https://via.placeholder.com/600x300?text=Quantum+News'}"
                             alt="${article.title}"
                             class="w-full h-48 object-cover rounded-md mb-4"
                         >
+
                         <h2 class="text-2xl font-bold text-gray-900 mb-2">
                             ${article.title}
                         </h2>
@@ -296,24 +371,26 @@
                         ${article.description || ""}
                     </p>
 
-                    <a href="${article.url}" target="_blank" rel="noopener noreferrer"
+                    <a href="${article.url}"
+                       target="_blank"
+                       rel="noopener noreferrer"
                        class="inline-flex items-center text-yellow-600 font-medium">
+
                         Read Full Article
-                        <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                  clip-rule="evenodd" />
-                        </svg>
                     </a>
+
                 </div>
             `).join("");
         })
         .catch(error => {
+
             console.error(error);
+
             document.getElementById("news-container").innerHTML = `
                 <div class="text-center py-10">
-                    <p class="text-red-500 mb-2">Failed to load news.</p>
-                    <p class="text-gray-600 text-sm">Please try again later.</p>
+                    <p class="text-red-500 mb-2">
+                        Failed to load news.
+                    </p>
                 </div>
             `;
         });
@@ -321,7 +398,7 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderEvents();
+            // renderEvents();
             fetchNews();
         });
     </script>
@@ -452,87 +529,5 @@
         });
     })();
     </script>
-    
-
-<!-- Popup Overlay -->
-<div id="whitepaperPopup"
-     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 transition-all duration-300">
-
-    <div class="relative bg-white rounded-3xl shadow-2xl max-w-md w-[90%] overflow-hidden animate-popup">
-
-        <div class="h-2 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
-
-        <button onclick="closePopup()"
-                class="absolute top-4 right-5 text-gray-400 hover:text-black text-3xl transition">
-            &times;
-        </button>
-
-        <div class="p-8 text-center">
-
-            <div class="w-20 h-20 mx-auto mb-5 rounded-full flex items-center justify-center shadow-lg
-                        bg-gradient-to-r from-yellow-400 to-yellow-500">
-
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-10 h-10 text-black"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-            </div>
-
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">
-                Whitepaper Coming Soon
-            </h2>
-
-            <p class="text-gray-600 leading-relaxed mb-8">
-                We’re currently preparing our Quantum Readiness Whitepaper.
-                Stay tuned for the official release.
-            </p>
-
-            <button onclick="closePopup()"
-                    class="px-7 py-3 rounded-xl text-black font-medium shadow-lg hover:scale-105 transition duration-300
-                           bg-gradient-to-r from-yellow-400 to-yellow-500">
-                Got It
-            </button>
-        </div>
-    </div>
-</div>
-
-<script>
-function openPopup() {
-    const popup = document.getElementById("whitepaperPopup");
-    popup.classList.remove("hidden");
-    popup.classList.add("flex");
-}
-
-function closePopup() {
-    const popup = document.getElementById("whitepaperPopup");
-    popup.classList.remove("flex");
-    popup.classList.add("hidden");
-}
-</script>
-
-<style>
-@keyframes popupFade {
-    from {
-        opacity: 0;
-        transform: scale(0.85) translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.animate-popup {
-    animation: popupFade 0.35s ease;
-}
-</style>
 </body>
 </html>
