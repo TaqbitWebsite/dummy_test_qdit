@@ -246,35 +246,222 @@
                 <a href="#" data-demo-button class="px-8 py-4 qd-button rounded-lg font-medium text-lg">
                     Schedule a Business Demo
                 </a>
-                <a href="#" class="px-8 py-4 qd-button-outline rounded-lg font-medium text-lg" onclick="alert('Downloading Quantum Readiness Whitepaper...')">
+                <!-- <a href="#" class="px-8 py-4 qd-button-outline rounded-lg font-medium text-lg" onclick="alert('Downloading Quantum Readiness Whitepaper...')">
                     Download Whitepaper
-                </a>
+                </a> -->
+                <!-- Button -->
+<a href="#"
+   class="px-8 py-4 text-black rounded-xl font-medium text-lg shadow-lg hover:scale-105 transition duration-300"
+   style="background: linear-gradient(to right, #FFD700, #FFC300);"
+   onclick="openPopup()">
+   Download Whitepaper
+</a>
+
+<!-- Popup Overlay -->
+<div id="whitepaperPopup"
+     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 transition-all duration-300">
+
+    <!-- Popup Card -->
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-md w-[90%] overflow-hidden animate-popup">
+
+        <!-- Top Gradient -->
+        <div class="h-2"
+             style="background: linear-gradient(to right, #FFD700, #FFC300);">
+        </div>
+
+        <!-- Close Button -->
+        <button onclick="closePopup()"
+                class="absolute top-4 right-5 text-gray-400 hover:text-black text-3xl transition">
+            &times;
+        </button>
+
+        <!-- Content -->
+        <div class="p-8 text-center">
+
+            <!-- Icon -->
+            <div class="w-20 h-20 mx-auto mb-5 rounded-full flex items-center justify-center shadow-lg"
+                 style="background: linear-gradient(to right, #FFD700, #FFC300);">
+
+                <!-- Document Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-10 h-10 text-black"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+
+            <!-- Heading -->
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                Whitepaper Coming Soon
+            </h2>
+
+            <!-- Description -->
+            <p class="text-gray-600 leading-relaxed mb-8">
+                We’re currently preparing our Quantum Readiness Whitepaper with detailed insights, research, and implementation strategies.
+                Stay tuned for the official release.
+            </p>
+
+            <!-- Button -->
+            <button onclick="closePopup()"
+                    class="px-7 py-3 rounded-xl text-black font-medium shadow-lg hover:scale-105 transition duration-300"
+                    style="background: linear-gradient(to right, #FFD700, #FFC300);">
+                Got It
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Animation -->
+<style>
+@keyframes popupFade {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-popup {
+    animation: popupFade 0.35s ease;
+}
+</style>
+
+<!-- Script -->
+<script>
+function openPopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+}
+
+function closePopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("flex");
+    popup.classList.add("hidden");
+}
+</script>
             </div>
         </div>
     </section>
-  <section class="relative min-h-screen flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 bg-blue-50 overflow-hidden">
+  <section class="relative min-h-screen flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
 
+   <!-- Animated Background -->
+<div class="absolute inset-0 overflow-hidden z-0">
 
-    <!-- Soft background gradient -->
-    <div class="absolute inset-0 z-0">
-       <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-indigo-50"></div>
-    </div>
+    <!-- Base Light Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-blue-50"></div>
+
+    <!-- Floating Shape 1 -->
+    <div class="floating-shape shape1"></div>
+
+    <!-- Floating Shape 2 -->
+    <div class="floating-shape shape2"></div>
+
+    <!-- Floating Shape 3 -->
+    <div class="floating-shape shape3"></div>
+
+</div>
 
     <!-- Content -->
     <div class="max-w-7xl mx-auto relative z-20 w-full">
-        
+
         <!-- Heading -->
-        <h2 class="text-4xl md:text-6xl font-bold text-center text-gray-900 mb-12">
-            Qdit Labs in the News
+        <h2 class="text-4xl md:text-6xl font-bold text-center text-gray-900 mb-14">
+            <span class="text-red-600">Qdit Labs</span> in the News
         </h2>
 
         <!-- Grid -->
-        <div id="news-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="news-container"
+             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         </div>
 
     </div>
 </section>
-      
+<style>
+
+/* Shared shape style */
+.floating-shape{
+    position:absolute;
+    border-radius:9999px;
+    filter:blur(80px);
+    opacity:0.7;
+}
+
+/* Gold blob */
+.shape1{
+    width:300px;
+    height:300px;
+    background:#FFD700;
+
+    top:10%;
+    left:5%;
+
+    animation:move1 6s infinite alternate ease-in-out;
+}
+
+/* Blue blob */
+.shape2{
+    width:250px;
+    height:250px;
+    background:#60a5fa;
+
+    bottom:10%;
+    right:10%;
+
+    animation:move2 7s infinite alternate ease-in-out;
+}
+
+/* Purple blob */
+.shape3{
+    width:220px;
+    height:220px;
+    background:#c084fc;
+
+    top:50%;
+    left:50%;
+
+    animation:move3 8s infinite alternate ease-in-out;
+}
+
+/* Movement animations */
+@keyframes move1{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+
+    100%{
+        transform:translate(150px,-100px) scale(1.2);
+    }
+}
+
+@keyframes move2{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+
+    100%{
+        transform:translate(-120px,80px) scale(1.15);
+    }
+}
+
+@keyframes move3{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+
+    100%{
+        transform:translate(100px,-120px) scale(1.25);
+    }
+}
+</style>
     
    
     <script>
@@ -294,8 +481,8 @@ const container = document.getElementById('news-container');
 
 tiles.forEach(t => {
     const card = document.createElement('div');
-    card.className = "bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300";
-
+    // card.className = "bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300";
+    card.className = "bg-white/70 backdrop-blur-xl rounded-2xl overflow-hidden border border-transparent shadow-lg hover:scale-105 hover:border-yellow-500 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all duration-500";
     const img = document.createElement('img');
     img.src = t.img;
    img.className = "max-h-full max-w-full object-contain";
@@ -964,6 +1151,88 @@ document.getElementById("contactForm").reset();
         });
     })();
     </script>
+
+
+<!-- Popup Overlay -->
+<div id="whitepaperPopup"
+     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 transition-all duration-300">
+
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-md w-[90%] overflow-hidden animate-popup">
+
+        <div class="h-2 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
+
+        <button onclick="closePopup()"
+                class="absolute top-4 right-5 text-gray-400 hover:text-black text-3xl transition">
+            &times;
+        </button>
+
+        <div class="p-8 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-5 rounded-full flex items-center justify-center shadow-lg
+                        bg-gradient-to-r from-yellow-400 to-yellow-500">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-10 h-10 text-black"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                Whitepaper Coming Soon
+            </h2>
+
+            <p class="text-gray-600 leading-relaxed mb-8">
+                We’re currently preparing our Quantum Readiness Whitepaper.
+                Stay tuned for the official release.
+            </p>
+
+            <button onclick="closePopup()"
+                    class="px-7 py-3 rounded-xl text-black font-medium shadow-lg hover:scale-105 transition duration-300
+                           bg-gradient-to-r from-yellow-400 to-yellow-500">
+                Got It
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openPopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+}
+
+function closePopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("flex");
+    popup.classList.add("hidden");
+}
+</script>
+
+<style>
+@keyframes popupFade {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-popup {
+    animation: popupFade 0.35s ease;
+}
+</style>
         
 </body>
 </html>

@@ -161,9 +161,14 @@
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">Whitepapers</h3>
           <p class="text-gray-600 mb-6">In-depth technical documentation on quantum security technologies and implementations.</p>
-          <a href="whitepapers.html" class="text-yellow-600 font-medium inline-flex items-center">
+          <!-- <a href="whitepapers.html" class="text-yellow-600 font-medium inline-flex items-center">
             Explore <i class="fas fa-arrow-right ml-2"></i>
-          </a>
+          </a> -->
+          <a href="javascript:void(0)"
+   onclick="openPopup()"
+   class="text-yellow-600 font-medium inline-flex items-center">
+    Explore <i class="fas fa-arrow-right ml-2"></i>
+</a>
         </div>
         <div class="card-hover-effect bg-white p-8 rounded-xl shadow-md border border-gray-200 text-center" data-aos="fade-up" data-aos-delay="200">
           <div class="w-16 h-16 rounded-lg bg-yellow-100 flex items-center justify-center mb-6 mx-auto">
@@ -228,7 +233,7 @@
 </section>
 
   <!-- Whitepapers Section -->
-  <section id="whitepapers" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
+  <!-- <section id="whitepapers" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Whitepapers & Technical Guides</h2>
@@ -284,7 +289,7 @@
           <i class="fas fa-book-open mr-2"></i> View All Whitepapers
         </a>
       </div>
-    </div>
+    </div> -->
   </section>
   <!-- Blogs Section -->
 <section class="py-12 bg-white">
@@ -343,13 +348,12 @@
     </div>
 </section>
   <!-- Events Section -->
-  <section id="events" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
+  <!-- <section id="events" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Events & Webinars</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Join our upcoming sessions with quantum security experts, or catch up on recordings 
-          from past events in our growing knowledge library.
+          Join our upcoming sessions with quantum security experts.
         </p>
       </div>
    <div id="resources-events-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
@@ -365,7 +369,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- FAQs Section -->
   <section id="faqs" class="py-20 px-6 md:px-12 lg:px-24 bg-white">
     <div class="max-w-5xl mx-auto">
@@ -578,6 +582,88 @@
         // For resources page, show only 4 publications
         renderPublications('publications-container', 4);
     });
+</script> 
+
+
+<!-- Popup Overlay -->
+<div id="whitepaperPopup"
+     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 transition-all duration-300">
+
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-md w-[90%] overflow-hidden animate-popup">
+
+        <div class="h-2 bg-gradient-to-r from-yellow-400 to-yellow-500"></div>
+
+        <button onclick="closePopup()"
+                class="absolute top-4 right-5 text-gray-400 hover:text-black text-3xl transition">
+            &times;
+        </button>
+
+        <div class="p-8 text-center">
+
+            <div class="w-20 h-20 mx-auto mb-5 rounded-full flex items-center justify-center shadow-lg
+                        bg-gradient-to-r from-yellow-400 to-yellow-500">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-10 h-10 text-black"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                Whitepaper Coming Soon
+            </h2>
+
+            <p class="text-gray-600 leading-relaxed mb-8">
+                We’re currently preparing our Quantum Readiness Whitepaper.
+                Stay tuned for the official release.
+            </p>
+
+            <button onclick="closePopup()"
+                    class="px-7 py-3 rounded-xl text-black font-medium shadow-lg hover:scale-105 transition duration-300
+                           bg-gradient-to-r from-yellow-400 to-yellow-500">
+                Got It
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openPopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+}
+
+function closePopup() {
+    const popup = document.getElementById("whitepaperPopup");
+    popup.classList.remove("flex");
+    popup.classList.add("hidden");
+}
 </script>
+
+<style>
+@keyframes popupFade {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-popup {
+    animation: popupFade 0.35s ease;
+}
+</style>
 </body>
 </html>
